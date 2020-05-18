@@ -75,33 +75,6 @@ class TemporaryFolder:##{{{
 ##}}}
 
 
-################
-## Old script ##
-##{{{
-
-#	## Define your parameters here
-#	##============================
-#	name_country = "France"  ## In English
-#	lonlatbox = -5,10,40,52  ## Lon/lat box
-#	dlon,dlat = 0.5,0.5    ## Resolution
-#	
-#	name_country = "Italy"
-#	lonlatbox = 5.5,20,36,48
-#	dlon,dlat = 0.05,0.05
-	
-#	name_country = "Spain"
-#	lonlatbox = -10,5,35,45
-#	dlon,dlat = 0.05,0.05
-	
-#	name_country = "Germany"
-#	lonlatbox = 5,16,47,55.5
-#	dlon,dlat = 0.05,0.05
-
-##}}}
-################
-
-
-
 ##########
 ## main ##
 ##########

@@ -7,6 +7,17 @@ file to a netcdf file. Some mask are given in masks folder.
 
 ## Requirement
 
+Packages used:
+
+- urllib
+- zipfile
+- numpy
+- geopandas
+- xarray
+- shapely
+
+Use your package manager or pip to install them.
+
 ## Usage
 
 Command line arguments:
@@ -15,13 +26,16 @@ Command line arguments:
 - `--country` or `-c` Country
 - `--lonlatbox` or `-b` Box, if not set, infered from Natural Earth data (can be VERY large)
 - `--dlonlat` or `-d` Length of grid point.
-- `--list` or `-l` Only list countries available
+- `--list` or `-l` Only print the list of countries available
 - `--output` or `-o` Output path
 
 ## Example
 
 ~~~
-python3 build_mask.py -d=1.0 -c=France -ne=data/ne_10m_admin_0_countries.zip
+python3 build_mask.py -d=0.05 -c=France  -b=-5,10,40,52  -ne=data/ne_10m_admin_0_countries.zip
+python3 build_mask.py -d=0.05 -c=Spain   -b=-10,5,35,45  -ne=data/ne_10m_admin_0_countries.zip
+python3 build_mask.py -d=0.05 -c=Italy   -b=5.5,20,36,48 -ne=data/ne_10m_admin_0_countries.zip
+python3 build_mask.py -d=0.05 -c=Germany -b=5,16,47,55.5 -ne=data/ne_10m_admin_0_countries.zip
 ~~~
 
 ![Alt](/figure/example.png)
