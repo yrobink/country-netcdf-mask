@@ -1,3 +1,9 @@
 .DS_Store
 *.swp
 data/ne_10m_admin_0_countries.zip
+__pycache__
+cnmask/data/*shp*
+cnmask/data/*zip
+output/*
+
+

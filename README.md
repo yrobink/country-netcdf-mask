@@ -2,8 +2,6 @@
 Script and examples to build a netcdf mask of a country
 
 ## Description
-The python file `build_mask.py` use natural earth data to transform a shape
-file to a netcdf file. Some mask are given in masks folder.
 
 ## Requirement
 
@@ -20,23 +18,9 @@ Use your package manager or pip to install them.
 
 ## Usage
 
-Command line arguments:
-- `--nedata` or `-ne` Natural earth file. If it is a path, Natural Earth data are downloaded here, else a temporary folder is used.
-- `--tmp` or `-t` Temporary folder. If not set, `/tmp/country_ncdfRANDOM` is used.
-- `--country` or `-c` Country
-- `--lonlatbox` or `-b` Box, if not set, infered from Natural Earth data (can be VERY large)
-- `--dlonlat` or `-d` Length of grid point.
-- `--list` or `-l` Only print the list of countries available
-- `--output` or `-o` Output path
 
 ## Example
 
-~~~
-python3 build_mask.py -d=0.05 -c=France  -b=-5,10,40,52  -ne=data/ne_10m_admin_0_countries.zip
-python3 build_mask.py -d=0.05 -c=Spain   -b=-10,5,35,45  -ne=data/ne_10m_admin_0_countries.zip
-python3 build_mask.py -d=0.05 -c=Italy   -b=5.5,20,36,48 -ne=data/ne_10m_admin_0_countries.zip
-python3 build_mask.py -d=0.05 -c=Germany -b=5,16,47,55.5 -ne=data/ne_10m_admin_0_countries.zip
-~~~
 
 ![Alt](/figure/example.png)
 
