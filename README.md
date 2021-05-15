@@ -3,6 +3,15 @@ Script and examples to build a netcdf mask of a country
 
 ## Description
 
+## Dataset used
+
+### GADM 3.6
+
+This package use the GADM data to build the netcdf mask, available [here](https://gadm.org/data.html).
+
+The GADM data use the ISO 3166-1 alpha-3 norm to describe countries, see [here](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3).
+
+
 ## Requirement
 
 Packages used:
