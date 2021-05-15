@@ -27,7 +27,47 @@ from shapely.geometry import MultiPoint
 ## Classes
 ##########
 
-class Grid:
+
+class GridParams:##{{{
+	
+	def __init__( self , file_in ):##{{{
+		lp = {}
+		
+		with open( file_in , "r" ) as f:
+			lines = f.readlines()
+			for line in lines:
+				try:
+					p,val = line.split("\n")[0].split("=")
+					lp[p] = val
+				except: pass
+		
+		for p in ["xmin","xmax","dx","ymin","ymax","dy","epsg"]:
+			try:
+				assert( p in lp.keys() )
+			except:
+				print("Grid params {} not given".format(p))
+			try:
+				if p == "epsg": lp[p] = int(lp[p])
+				else: lp[p] = float(lp[p])
+			except:
+				print("Bad value for params {}".format(p))
+		
+		self.xmin = lp["xmin"]
+		self.xmax = lp["xmax"]
+		self.dx   = lp["dx"]
+		self.ymin = lp["ymin"]
+		self.ymax = lp["ymax"]
+		self.dy   = lp["dy"]
+		self.epsg = lp["epsg"]
+		
+		self.kwargs = { "xparams" : (self.xmin,self.xmax,self.dx),
+						"yparams" : (self.ymin,self.ymax,self.dy),
+						"epsg"    : self.epsg }
+	##}}}
+	
+##}}}
+
+class Grid:##{{{
 	
 	def __init__( self , xparams , yparams , epsg = 4326 ):##{{{
 		self.xparams = xparams
@@ -90,5 +130,5 @@ class Grid:
 		return self.y.size
 	
 	##}}}
-
+##}}}
 

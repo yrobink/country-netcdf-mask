@@ -22,12 +22,12 @@
 import datetime as dt
 import xarray as xr
 from .__grid import Grid
-
+from .__version import version
 
 ## Functions
 ##==========
 
-def _to_dataset_4326( mask_array , grid : Grid ):##{{{
+def _to_dataset_4326( mask_array , grid : Grid , cnm_params ):##{{{
 	
 	## Define the grid mapping
 	gm_name = "WGS_84"
@@ -46,6 +46,11 @@ def _to_dataset_4326( mask_array , grid : Grid ):##{{{
 	ncdata.attrs["title"] = "Mask"
 	ncdata.attrs["Conventions"] = "CF-1.0"
 	ncdata.attrs["creation_date"] = str(dt.datetime.today())[:19]
+	ncdata.attrs["country_netcdf_mask_url"]     = "https://github.com/yrobink/country-netcdf-mask"
+	ncdata.attrs["country_netcdf_mask_version"] = version
+	if cnm_params.src_is_gadm36():
+		ncdata.attrs["source_shapefile"] = "https://gadm.org/data.html"
+		ncdata.attrs["GADM_description"] = cnm_params.src
 	
 	ncdata[gm_name].attrs["EPSG"]       = "{}".format(grid.epsg)
 	ncdata[gm_name].attrs["references"] = "https://spatialreference.org/ref/epsg/{}/".format(grid.epsg)
@@ -75,7 +80,7 @@ def _to_dataset_4326( mask_array , grid : Grid ):##{{{
 	return ncdata,encoding
 ##}}}
 
-def _to_dataset_generic( mask_array , grid : Grid ):##{{{
+def _to_dataset_generic( mask_array , grid : Grid , cnm_params ):##{{{
 	
 	## Define the grid mapping
 	gm_name   = grid.df.crs.coordinate_operation.name.replace(" ","_")
@@ -95,6 +100,11 @@ def _to_dataset_generic( mask_array , grid : Grid ):##{{{
 	ncdata.attrs["title"] = "Mask"
 	ncdata.attrs["Conventions"]   = "CF-1.0"
 	ncdata.attrs["creation_date"] = str(dt.datetime.today())[:19]
+	ncdata.attrs["country_netcdf_mask_url"]     = "https://github.com/yrobink/country-netcdf-mask"
+	ncdata.attrs["country_netcdf_mask_version"] = version
+	if cnm_params.src_is_gadm36():
+		ncdata.attrs["source_shapefile"] = "https://gadm.org/data.html"
+		ncdata.attrs["GADM_description"] = cnm_params.src
 	
 	ncdata[gm_name].attrs["grid_mapping_name"] = gm_method
 	ncdata[gm_name].attrs["EPSG"]              = "{}".format(grid.epsg)
@@ -138,12 +148,12 @@ def _to_dataset_generic( mask_array , grid : Grid ):##{{{
 	return ncdata,encoding
 ##}}}
 
-def to_dataset( mask_array , grid : Grid ):##{{{
+def to_dataset( mask_array , grid : Grid , cnm_params ):##{{{
 	
 	if grid.epsg == 4326:
-		return _to_dataset_4326( mask_array , grid )
+		return _to_dataset_4326( mask_array , grid , cnm_params )
 	
-	return _to_dataset_generic( mask_array , grid )
+	return _to_dataset_generic( mask_array , grid , cnm_params )
 ##}}}
 
 

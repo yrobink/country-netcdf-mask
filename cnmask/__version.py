@@ -16,14 +16,10 @@
 ## You should have received a copy of the GNU General Public License
 ## along with country-netcdf-mask.  If not, see <https://www.gnu.org/licenses/>.
 
-from .__version import version
-__version__ = version
+version_major = 0
+version_minor = 2
+version_patch = 0
+version_extra = "a0"
 
-from .__CNMParams  import CNMParams
-from .__load_shp   import load_gadm36
-from .__grid       import GridParams
-from .__grid       import Grid
-from .__output     import to_dataset
-from .__build_mask import build_mask
-
+version = "{}.{}.{}{}".format(version_major,version_minor,version_patch,version_extra)
 
