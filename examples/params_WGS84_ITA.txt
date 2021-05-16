@@ -1,0 +1,7 @@
+xmin=6.5
+xmax=19
+dx=0.01
+ymin=35
+ymax=47.5
+dy=0.01
+epsg=4326
