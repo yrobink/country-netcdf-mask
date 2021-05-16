@@ -15,6 +15,9 @@
 ## France, in Lambert II carto
 #python3 exec.py -i examples/params_LambertIIcarto_FRA.txt -o output/mask_France_LambertII.nc -src gadm36,FRA,0
 
+## Occitanie, in France, with Lambert II coordinates
+#python3 exec.py -i examples/params_LambertIIcarto_FRA.txt -o output/mask_France_Occitanie_LambertII.nc -src gadm36,FRA,1,NAME_1=Occitanie
+
 ## Italy, and Sicily in WGS84 coordinates
 #python3 exec.py -i examples/params_WGS84_ITA.txt -o output/mask_Italy_WGS84.nc -src gadm36,ITA,0 -bounds
 #python3 exec.py -i examples/params_WGS84_ITA.txt -o output/mask_Italy_WGS84.nc -src gadm36,ITA,0
