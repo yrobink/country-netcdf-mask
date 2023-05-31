@@ -1,9 +1,11 @@
 # country-netcdf-mask
 
+This package is deprecated and not maintened, in favour of [shp2ncmask](https://github.com/yrobink/Shp2ncmask), which is more generic.
+
+
 ## Description
 
 Script and examples to build a netcdf mask of a country
-
 
 ## Requirement
 
